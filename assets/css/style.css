@@ -2,8 +2,56 @@
     box-sizing: border-box;
   }
 
+  :root {
+    --primary: #298d9c;
+    --secondary: #4fdb32;
+    --tertiary: #28edc6;
+}
+
   header {
       display: flex;
       justify-content: space-between;
       margin: 20px;
   } 
+
+  header a {
+      color: orangered;
+  }
+
+  .timer-text {
+    border: none;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+  body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      height: 700px;
+      border: 2px solid var(--tertiary);
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 50px;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 70%;
+    height: auto;
+    width: auto;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 70%;
+    height: auto;
+    width: auto;
+}
+
+
