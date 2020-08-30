@@ -17,9 +17,9 @@ var answer5 = ["numbers and strings", "other arrays", "booleans", "all of the ab
 
 /*var quizObj = {
 
-}
+}*/
 
-var countDown = function () {
+/*var countDown = function () {
     var timeLeft = 5;
     //small timer for testing
 
@@ -39,7 +39,7 @@ var countDown = function () {
 
 var startQuiz = function (event) {
     event.preventDefault();
-    var newCard = document.getElementById("#newCard");
+   // var newCard = document.getElementById("#newCard");
     //newCard.remove();
     createCard()
 
@@ -77,12 +77,18 @@ var createCard = function () {
     mainEl.appendChild(questionEl);
 
     console.log(mainEl);
-    console.log(choice1El)
+    //console.log(answer1El)
 };
 
 
-var checkAnswer = function () {
-
+var checkAnswer = function (e) {
+    if (e.target.classList.contains('answer-btn') && e.target.classList.contains('correct')) {
+        alert("CORRECT!");
+    } else if (e.target.id === 'start') {
+        alert("QUIZ HAS BEGUN!");
+    } else {
+        alert("INCORRECT!");
+    }
 };
 
 var gameOver = function () {
@@ -94,16 +100,10 @@ var highScore = function () {
 };
 
 
-
-
 startButton.addEventListener("click", startQuiz);
 
-document.querySelector("#main").addEventListener('click', function (e) {
-    if (e.target.classList.contains('answer-btn')) {
-        alert('clicked');
-    }
-})
-// choiceButton.addEventListener("click", checkAnswer);
+document.querySelector("#main").addEventListener('click', checkAnswer);
+    
 // pageContentEl.addEventListener("click", taskButtonHandler);
 
 //startQuiz(e)
