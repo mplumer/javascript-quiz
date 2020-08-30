@@ -51,7 +51,18 @@ article {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      flex-basis: 70%;
+      height: 100px;
       width: auto;
+      font-size: 2rem;
+}
+
+article p, label {
+    font-family: sans-serif;
+    margin: 40px 0;
+    line-height: 1.4;  
+    font-size: 1.2rem;  
 }
 
   .question {
@@ -75,24 +86,42 @@ article {
     width: 30%;
     text-align: left;
     margin: 5px 0;
-    font-family: sans-serif;
-    /* box-shadow: 1px 1px grey; */  
+    font-family: sans-serif; 
 }
 
-#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
+#start:hover, #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
     cursor: pointer;
-    background-color: #01BBFF;
+    background-color: skyblue;
 }
  
 #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
     outline: 0;
 }
 
-#start {
+#start, #submit {
     text-align: center;
     width: auto;
 }
 
+.score-card {
+    border: 1px solid red;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 0 20px 20px;
+
+}
+
+.score-card h3 {
+    margin: 0;
+}
+
+.score-card p {
+    margin: 10px 0 0 0;
+}
+
+label {
+    font-family: 'Roboto-light', sans-serif;
+}
 
 
 .verify {

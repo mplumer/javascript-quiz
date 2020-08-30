@@ -1,19 +1,9 @@
 var mainEl = document.querySelector('#main');
 var newCard = document.querySelector('#newCard');
 var startButton = document.querySelector('#start');
-var answerButton = document.querySelector(".answer-btn");
-var choiceButton = document.querySelector('.question');
+var choiceButton = document.querySelector(".choice-btn");
+var questionCard = document.querySelector('.question');
 
-var question1 = "The condition in an if/else statement is enclosed with ____.</h2>";
-var answer1 = ["quotes", "curly brackets", "parentheses", "square brackets"];
-var question2 = "Commonly used data types DO NOT include:";
-var answer2 = ["strings", "booleans", "alerts", "numbers"];
-var question3 = "A very useful tool used during development and debugging for printing content to the debugger is:";
-var answer3 = ["JavaScript", "Terminal/Bash", "for loops", "console.log"];
-var question4 = "String values must be enclodsed within __________ when being assigned to variables.";
-var answer4 = ["commas", "curly brackets", "quotes", "parentheses"];
-var question5 = "Arrays in JavaScript can be used to store __________";
-var answer5 = ["numbers and strings", "other arrays", "booleans", "all of the above"];
 
 /*var quizObj = {
 
@@ -21,7 +11,7 @@ var answer5 = ["numbers and strings", "other arrays", "booleans", "all of the ab
 
 /*var countDown = function () {
     var timeLeft = 75;
-    //small timer for testing
+    small timer for testing
 
     var timeInterval = setInterval(function () {
         if (timeLeft > 0) {
@@ -35,64 +25,96 @@ var answer5 = ["numbers and strings", "other arrays", "booleans", "all of the ab
     startGame();
 };*/
 
-var startQuiz = function (event) {
-    event.preventDefault();
-    // var newCard = document.getElementById("#newCard");
-    //newCard.remove();
-    createCard()
+/*var choiceButton = document.querySelectorAll(".choice-btn");
+var buttons = document.getElementsByTagName("button");
+var quizObj = {
+    question: "",
+    choices: []
+}
 
-};
+var Question = function (text, choices, answer) {
+    this.text = text;
+    this.choices = choices;
+    this.answer = answer;
+}
+
+var questions = [
+    new Question("The condition in an if/else statement is enclosed with __________.", ["quotes", "curly brackets", "parentheses", "square brackets"], "parentheses"),
+    new Question("Commonly used data types DO NOT include:", ["strings", "booleans", "alerts", "numbers"], "alerts"),
+    new Question("A very useful tool used during development and debugging for printing content to the debugger is:", ["JavaScript", "Terminal/Bash", "for loops", "console.log"], "console.log"),
+    new Question("String values must be enclodsed within __________ when being assigned to variables.", ["commas", "curly brackets", "quotes", "parentheses"], "quotes"),
+    new Question("Arrays in JavaScript can be used to store __________", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above")
+];
 
 var createCard = function () {
     // create question 
     var questionEl = document.createElement("article");
     questionEl.className = "question";
-    questionEl.innerHTML = "<h2>Commonly used data types DO NOT include:</h2>";
+    questionEl.innerHTML = "<h2>The condition in an if / else statement is enclosed with ________.</h2>";
 
-    // create answers
-    var answer1El = document.createElement("button");
-    answer1El.textContent = "1. alerts";
-    answer1El.id = "answer1";
-    answer1El.className = "answer-btn";
-    var answer2El = document.createElement("button");
-    answer2El.textContent = "2. booleans";
-    answer2El.id = "answer2";
-    answer2El.className = "answer-btn";
-    var answer3El = document.createElement("button");
-    answer3El.textContent = "3. numbers";
-    answer3El.id = "answer3";
-    answer3El.className = "answer-btn";
-    var answer4El = document.createElement("button");
-    answer4El.textContent = "4. strings";
-    answer4El.id = "answer4";
-    answer4El.className = "answer-btn";
+    // create choices
+    var choice1El = document.createElement("button");
+    choice1El.textContent = "1. quotes";
+    choice1El.id = "choice1";
+    choice1El.className = "button choice-btn";
+    var choice2El = document.createElement("button");
+    choice2El.textContent = "2. curly brackets";
+    choice2El.id = "choice2";
+    choice2El.className = "button choice-btn";
+    var choice3El = document.createElement("button");
+    choice3El.textContent = "3. parentheses";
+    choice3El.id = "choice3";
+    choice3El.className = "button choice-btn correct";
+    choice3El.name = "correct";
+    var choice4El = document.createElement("button");
+    choice4El.textContent = "4. square brackets";
+    choice4El.id = "choice4";
+    choice4El.className = "button choice-btn";
 
-    questionEl.appendChild(answer1El);
-    questionEl.appendChild(answer2El);
-    questionEl.appendChild(answer3El);
-    questionEl.appendChild(answer4El);
+    questionEl.appendChild(choice1El);
+    questionEl.appendChild(choice2El);
+    questionEl.appendChild(choice3El);
+    questionEl.appendChild(choice4El);
+
 
     mainEl.appendChild(questionEl);
 };
+choiceButton.onclick = function () {
+    alert("you clicked a choice");
+};
 
+var initialize = function () {
+    if (createCard.isEnded()) {
+        showScores();
+    }
+    else {
+        var element = document.getElementById("question");
+        element.innerHTML = createCard.get
+    }
+}
 
 var checkAnswer = function (e) {
     if (e.target.classList.contains('choice-btn') && e.target.classList.contains('correct')) {
-        var correctEl = document.createElement("div");
-        correctEl.textContent = "Correct!";
-        correctEl.className = "verify";
-        mainEl.appendChild(correctEl);
-        console.log("Correct!");
+        var rightEl = document.createElement("div");
+        rightEl.textContent = "Right!";
+        rightEl.className = "verify";
+        mainEl.appendChild(rightEl);
+        var nextEl = document.createElement("button");
+        nextEl.textContent = "Next";
+        nextEl.id = "next";
+        nextEl.className = "button";
+        mainEl.appendChild(nextEl);
+        console.log("RIGHT!");
 
-    } else if (e.target.id === 'start') {
-        console.log("QUIZ HAS BEGUN!");
+    } else if (e.target.id === 'start' || e.target.id === 'next') {
+        console.log("QUIZ BEGINS!");
 
     } else {
-        var IncorrectEl = document.createElement("div");
-        IncorrectEl.textContent = "Incorrect!";
-        IncorrectEl.className = "verify";
-        mainEl.appendChild(IncorrectEl);
-        console.log("Incorrect!");
+        var wrongEl = document.createElement("div");
+        wrongEl.textContent = "Wrong!";
+        wrongEl.className = "verify";
+        mainEl.appendChild(wrongEl);
+        console.log("WRONG!");
     }
 };
 
@@ -104,11 +126,147 @@ var highScore = function () {
 
 };
 
+*/// START QUIZ
+var startQuiz = function (event) {
+    var newCard = document.getElementById("#newCard");
+    newCard.remove();
+    createCard()
+    populate()
+    startTimer()
+};
 
+/*// CREATE QUESTION CARD
+var createCard = new Card(questions);
+
+// SHOW QUIZ
+initialize();
+
+// LISTENERS
 startButton.addEventListener("click", startQuiz);
 
 document.querySelector("#main").addEventListener('click', checkAnswer);
 
-// pageContentEl.addEventListener("click", taskButtonHandler);
+choiceButton.addEventListener("click", checkAnswer);
+pageContentEl.addEventListener("click", taskButtonHandler);
 
-//startQuiz(e)
+*///startQuiz(e)
+function Quiz(questions) {
+    this.score = 0;
+    this.questions = questions;
+    this.questionIndex = 0;
+}
+
+Quiz.prototype.getQuestionIndex = function () {
+    return this.questions[this.questionIndex];
+}
+
+Quiz.prototype.guess = function (answer) {
+    if (this.getQuestionIndex().isCorrectAnswer(answer)) {
+        this.score++;
+    }
+
+    this.questionIndex++;
+}
+
+Quiz.prototype.isEnded = function () {
+    return this.questionIndex === this.questions.length;
+}
+
+
+function Question(text, choices, answer) {
+    this.text = text;
+    this.choices = choices;
+    this.answer = answer;
+}
+
+Question.prototype.isCorrectAnswer = function (choice) {
+    return this.answer === choice;
+}
+
+
+function populate() {
+    if (quiz.isEnded()) {
+        gameOver();
+    } else {
+        //   show question
+        //   var element = document.getElementById("question");
+        //   element.innerHTML = quiz.getQuestionIndex().text;
+
+        //   create question
+        var questionEl = document.createElement("article");
+        questionEl.className = "question";
+        questionEl.innerHTML = quiz.getQuestionIndex().text;
+        mainEl.appendChild(questionEl);
+
+
+        // show options
+        var choices = quiz.getQuestionIndex().choices;
+        for (var i = 0; i < choices.length; i++) {
+            var choiceEl = document.createElement("button");
+            choiceEl.id = "btn" + i;
+            choiceEl.className = "button choice-btn";
+            mainEl.appendChild(choiceEl);
+            var spanEl = document.createElement("span");
+            spanEl.id = "choice" + i;
+            choiceEl.appendChild(spanEl);
+            var element = document.getElementById("choice" + i);
+            element.innerHTML = choices[i];
+            guess("btn" + i, choices[i]);
+        }
+
+        showProgress();
+
+    }
+};
+
+function guess(id, guess) {
+    var button = document.getElementById(id);
+    button.onclick = function () {
+        quiz.guess(guess);
+        var questionEl = document.querySelector(".question");
+        mainEl.removeChild(questionEl);
+        var choiceEl = document.querySelector("button");
+        mainEl.removeChild(choiceEl);
+        var choiceEl = document.querySelector("button");
+        mainEl.removeChild(choiceEl);
+        var choiceEl = document.querySelector("button");
+        mainEl.removeChild(choiceEl);
+        var choiceEl = document.querySelector("button");
+        mainEl.removeChild(choiceEl);
+        populate();
+    }
+};
+
+
+function showProgress() {
+    var currentQuestionNumber = quiz.questionIndex + 1;
+    var element = document.getElementById("progress");
+    element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
+};
+
+var gameOver = function () {
+    var scoreCard = document.createElement("article");
+    scoreCard.id = "score-card-id";
+    scoreCard.className = "score-card";
+    mainEl.appendChild(scoreCard);
+    var gameOverHTML = "<h3>All done!</h3>";
+    gameOverHTML += "<p id='score'> Your final score is " + quiz.score + "</p>"
+    gameOverHTML += "<form><label for='initials'>Enter initials: </label><input type='text' id='initials' name='initials'><br><input type='submit' id='submit' class='button' value='Submit'></form>"
+    scoreCard.innerHTML = gameOverHTML;
+};
+
+// create questions here
+var questions = [
+    new Question("Arrays in JavaScript can be used to store __________", ["numbers and strings", "other arrays", "booleans", "all of the above"], "all of the above"),
+    new Question("Commonly used data types DO NOT include:", ["strings", "booleans", "alerts", "numbers"], "alerts"),
+    new Question("A very useful tool used during development and debugging for printing content to the debugger is:", ["JavaScript", "Terminal/Bash", "for loops", "console.log"], "console.log"),
+    new Question("String values must be enclosed within __________ when being assigned to variables.", ["commas", "curly brackets", "quotes", "parentheses"], "quotes"),
+    new Question("The condition in an if/else statement is enclosed with __________.", ["quotes", "curly brackets", "parentheses", "square brackets"], "parentheses"),
+];
+
+// create quiz
+var quiz = new Quiz(questions);
+
+// display quiz
+startButton.addEventListener("click", startQuiz);
+populate();
