@@ -6,19 +6,19 @@
     --primary: #298d9c;
     --secondary: #4fdb32;
     --tertiary: #28edc6;
-}
+ }
 
-  header {
+header {
       display: flex;
       justify-content: space-between;
       margin: 20px;
   } 
 
-  header a {
+header a {
       color: orangered;
   }
 
-  .timer-text {
+.timer-text {
     border: none;
     padding: 16px 32px;
     text-align: center;
@@ -26,13 +26,13 @@
     margin: 4px 2px;
 }
 
-  body {
+body {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       height: 700px;
       border: 2px solid var(--tertiary);
-  }
+}
 
-  main {
+main {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -41,17 +41,70 @@
     align-items: center;
     flex-basis: 70%;
     height: auto;
-    width: auto;
-  }
+}
 
-  .card {
+.main-text {
+    margin: 0 35px 40px 35px;
+}
+
+article {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: auto;
+}
+
+  .question {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 70%;
     height: auto;
     width: auto;
+    align-items: flex-start;
+    text-align: left;    
+ }
+
+.button {
+    outline: none;
+    border: none;
+    display: inline-block;
+    position: relative;
+    padding: 10px 15px;
+    color: white;
+    background: darkslateblue;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    width: 30%;
+    text-align: left;
+    margin: 5px 0;
+    font-family: sans-serif;
+    /* box-shadow: 1px 1px grey; */  
 }
+
+#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
+    cursor: pointer;
+    background-color: #01BBFF;
+}
+ 
+#btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
+    outline: 0;
+}
+
+#start {
+    text-align: center;
+    width: auto;
+}
+
+
+
+.verify {
+    color: grey;
+    font-style: italic;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    text-align: left;
+    margin: 20px 0;
+    padding: 10px;
+    border-top: 1px solid grey;
+}
+
 
 

@@ -1,8 +1,8 @@
 var mainEl = document.querySelector('#main');
 var newCard = document.querySelector('#newCard');
 var startButton = document.querySelector('#start');
-var answerButton = document.querySelectorAll(".answer-btn");
-var button = document.getElementsByTagName('button');
+var answerButton = document.querySelector(".answer-btn");
+var choiceButton = document.querySelector('.question');
 
 var question1 = "The condition in an if/else statement is enclosed with ____.</h2>";
 var answer1 = ["quotes", "curly brackets", "parentheses", "square brackets"];
@@ -20,7 +20,7 @@ var answer5 = ["numbers and strings", "other arrays", "booleans", "all of the ab
 }*/
 
 /*var countDown = function () {
-    var timeLeft = 5;
+    var timeLeft = 75;
     //small timer for testing
 
     var timeInterval = setInterval(function () {
@@ -35,11 +35,9 @@ var answer5 = ["numbers and strings", "other arrays", "booleans", "all of the ab
     startGame();
 };*/
 
-
-
 var startQuiz = function (event) {
     event.preventDefault();
-   // var newCard = document.getElementById("#newCard");
+    // var newCard = document.getElementById("#newCard");
     //newCard.remove();
     createCard()
 
@@ -75,19 +73,26 @@ var createCard = function () {
     questionEl.appendChild(answer4El);
 
     mainEl.appendChild(questionEl);
-
-    console.log(mainEl);
-    //console.log(answer1El)
 };
 
 
 var checkAnswer = function (e) {
-    if (e.target.classList.contains('answer-btn') && e.target.classList.contains('correct')) {
-        alert("CORRECT!");
+    if (e.target.classList.contains('choice-btn') && e.target.classList.contains('correct')) {
+        var correctEl = document.createElement("div");
+        correctEl.textContent = "Correct!";
+        correctEl.className = "verify";
+        mainEl.appendChild(correctEl);
+        console.log("Correct!");
+
     } else if (e.target.id === 'start') {
-        alert("QUIZ HAS BEGUN!");
+        console.log("QUIZ HAS BEGUN!");
+
     } else {
-        alert("INCORRECT!");
+        var IncorrectEl = document.createElement("div");
+        IncorrectEl.textContent = "Incorrect!";
+        IncorrectEl.className = "verify";
+        mainEl.appendChild(IncorrectEl);
+        console.log("Incorrect!");
     }
 };
 
@@ -103,7 +108,7 @@ var highScore = function () {
 startButton.addEventListener("click", startQuiz);
 
 document.querySelector("#main").addEventListener('click', checkAnswer);
-    
+
 // pageContentEl.addEventListener("click", taskButtonHandler);
 
 //startQuiz(e)
