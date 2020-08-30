@@ -8,7 +8,7 @@ An online app that quizzes players about computer coding.
 * CSS
 * JavaScript
 
-![Screenshot](assets/images/screen-shot.png)
+![Screenshot](assets/images/screenshot.jpg)
 
 ## Website
  

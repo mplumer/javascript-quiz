@@ -3,7 +3,7 @@ var newCard = document.querySelector('#newCard');
 var startButton = document.querySelector('#start');
 var choiceButton = document.querySelector(".choice-btn");
 var questionCard = document.querySelector('.question');
-var timeLeft = 75;
+var timeLeft = 60;
 
 
 function countDown() {
@@ -11,6 +11,7 @@ function countDown() {
         timeLeft--;
         document.getElementById("timer").innerHTML = "Time: " + timeLeft + "s ";
         if (timeLeft < 0) {
+            timeLeft = 0;
             clearInterval(timeLeft);
             document.getElementById("timer").innerHTML = "Time Up!";
         } else if (quiz.isEnded()) {
